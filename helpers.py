@@ -39,7 +39,7 @@ def write_duos(file, num, duos):
     else:
         permission = 'a'
 
-    with open(f'{file}_duos.csv', permission) as f:
+    with open(f'{file}_duos.csv', permission, newline='') as f:
         writer = csv.writer(f, delimiter=';')
         writer.writerow([f'week{num}'] + duos)
 

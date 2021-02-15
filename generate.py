@@ -4,16 +4,16 @@ import random
 from helpers import all_unique, load_students, load_history, write_duos, load_presets, load_duos, overlapping
 
 # Set these values!
-team_count = 6
+team_count = 5
 team_size = 2
 
 students = load_students()
 
-file = 'review'
+infile = 'review'
 use_presets = False
 
 
-history = load_history(file)
+history = load_history(infile)
 
 options = set(itertools.combinations([student.uid for student in students.values()], team_size))
 count = len(history) // team_count
@@ -22,7 +22,7 @@ if use_presets:
     pre_sets = load_presets()
     team_count -= len(pre_sets)
 
-review_duos = load_duos('review')
+review_duos = load_duos(infile)
 
 while True:
     count += 1
@@ -41,4 +41,4 @@ while True:
     for pair in choice:
         history.add(pair)
 
-    write_duos(file, count, choice)
+    write_duos(infile, count, choice)
